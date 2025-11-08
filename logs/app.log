@@ -1,0 +1,291 @@
+[INFO] Tentative de connexion à la base de données { config: { host: 'db', database: 'crud_app' } }
+[INFO] Base de données initialisée avec succès { table: 'users' }
+[INFO] Application démarrée avec succès { port: '3000', environment: 'development' }
+
+Serveur démarré sur le port 3000
+Health check: http://localhost:3000/health
+API Users: http://localhost:3000/api/users
+Logs: /var/logs/crud/app.log
+
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+[INFO] Récupération d'un utilisateur { endpoint: '/api/users/:uuid', method: 'GET', uuid: 'kze', delay: 0 }
+[WARN] Utilisateur non trouvé {
+  endpoint: '/api/users/:uuid',
+  method: 'GET',
+  uuid: 'kze',
+  status: 404
+}
+:48:01.337Z","level":"INFO","message":"Récupération d'un utilisateur","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","delay":0}}
+{"timestamp":"2025-11-04T16:48:01.342Z","level":"WARN","message":"Utilisateur non trouvé","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","status":404},"processing_time_ms":5}
+{"timestamp":"2025-11-04T16:48:01.707Z","level":"INFO","message":"Récupération d'un utilisateur","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","delay":0}}
+{"timestamp":"2025-11-04T16:48:01.716Z","level":"WARN","message":"Utilisateur non trouvé","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","status":404},"processing_time_ms":9}
+{"timestamp":"2025-11-04T16:48:01.972Z","level":"INFO","message":"Récupération d'un utilisateur","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","delay":0}}
+{"timestamp":"2025-11-04T16:48:01.981Z","level":"WARN","message":"Utilisateur non trouvé","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","status":404},"processing_time_ms":9}
+{"timestamp":"2025-11-04T16:48:02.235Z","level":"INFO","message":"Récupération d'un utilisateur","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","delay":0}}
+{"timestamp":"2025-11-04T16:48:02.241Z","level":"WARN","message":"Utilisateur non trouvé","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","status":404},"processing_time_ms":7}
+{"timestamp":"2025-11-04T16:49:00.418Z","level":"INFO","message":"Récupération d'un utilisateur","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","delay":0}}
+{"timestamp":"2025-11-04T16:49:00.442Z","level":"WARN","message":"Utilisateur non trouvé","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","status":404},"processing_time_ms":24}
+{"timestamp":"2025-11-04T16:49:00.706Z","level":"INFO","message":"Récupération d'un utilisateur","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","delay":0}}
+{"timestamp":"2025-11-04T16:49:00.712Z","level":"WARN","message":"Utilisateur non trouvé","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","status":404},"processing_time_ms":6}
+{"timestamp":"2025-11-04T16:49:00.937Z","level":"INFO","message":"Récupération d'un utilisateur","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","delay":0}}
+{"timestamp":"2025-11-04T16:49:00.943Z","level":"WARN","message":"Utilisateur non trouvé","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","status":404},"processing_time_ms":6}
+{"timestamp":"2025-11-04T16:49:01.130Z","level":"INFO","message":"Récupération d'un utilisateur","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","delay":0}}
+{"timestamp":"2025-11-04T16:49:01.139Z","level":"WARN","message":"Utilisateur non trouvé","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","status":404},"processing_time_ms":9}
+{"timestamp":"2025-11-04T16:49:01.318Z","level":"INFO","message":"Récupération d'un utilisateur","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","delay":0}}
+{"timestamp":"2025-11-04T16:49:01.325Z","level":"WARN","message":"Utilisateur non trouvé","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","status":404},"processing_time_ms":7}
+{"timestamp":"2025-11-04T16:49:01.503Z","level":"INFO","message":"Récupération d'un utilisateur","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","delay":0}}
+{"timestamp":"2025-11-04T16:49:01.508Z","level":"WARN","message":"Utilisateur non trouvé","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","status":404},"processing_time_ms":5}
+{"timestamp":"2025-11-04T16:49:01.688Z","level":"INFO","message":"Récupération d'un utilisateur","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","delay":0}}
+{"timestamp":"2025-11-04T16:49:01.700Z","level":"WARN","message":"Utilisateur non trouvé","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","status":404},"processing_time_ms":12}
+{"timestamp":"2025-11-04T16:49:01.861Z","level":"INFO","message":"Récupération d'un utilisateur","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","delay":0}}
+{"timestamp":"2025-11-04T16:49:01.871Z","level":"WARN","message":"Utilisateur non trouvé","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","status":404},"processing_time_ms":10}
+{"timestamp":"2025-11-04T16:49:02.051Z","level":"INFO","message":"Récupération d'un utilisateur","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","delay":0}}
+{"timestamp":"2025-11-04T16:49:02.059Z","level":"WARN","message":"Utilisateur non trouvé","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","status":404},"processing_time_ms":8}
+{"timestamp":"2025-11-04T16:49:02.235Z","level":"INFO","message":"Récupération d'un utilisateur","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","delay":0}}
+{"timestamp":"2025-11-04T16:49:02.241Z","level":"WARN","message":"Utilisateur non trouvé","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","status":404},"processing_time_ms":6}
+{"timestamp":"2025-11-04T16:49:02.397Z","level":"INFO","message":"Récupération d'un utilisateur","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","delay":0}}
+{"timestamp":"2025-11-04T16:49:02.400Z","level":"WARN","message":"Utilisateur non trouvé","context":{"endpoint":"/api/users/:uuid","method":"GET","uuid":"kze","status":404},"processing_time_ms":3}
