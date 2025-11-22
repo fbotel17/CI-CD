@@ -30,3 +30,117 @@ jobs:
           # On expose ces valeurs comme outputs du step
           echo "TAG=$RAW_REF" >> $GITHUB_OUTPUT
           echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+
+      # 3) Connexion à Docker Hub
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password:
+            ${{ secrets.DOCKERHUB_TOKEN }}
+
+            # 4) Build de l'image Docker de l'API CRUD
+      - name: Build API Docker image
+        run: |
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/crud-api:${{ steps.extract_version.outputs.VERSION }} ./App
+
+      # 4b) Push de l'image versionnée
+      - name: Push API Docker image (version)
+        run: |
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/crud-api:${{ steps.extract_version.outputs.VERSION }}
+
+      # 4c) Tag et push du latest
+      - name: Push API Docker image (latest)
+        run: |
+          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/crud-api:${{ steps.extract_version.outputs.VERSION }} \
+                     ${{ secrets.DOCKERHUB_USERNAME }}/crud-api:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/crud-api:latest
+
+      # 5) Build de l'image Fluent Bit
+      - name: Build Fluent Bit Docker image
+        run: |
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/fluentbit:${{ steps.extract_version.outputs.VERSION }} ./fluentbit
+
+      # 5b) Push de l'image Fluent Bit versionnée
+      - name: Push Fluent Bit Docker image (version)
+        run: |
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/fluentbit:${{ steps.extract_version.outputs.VERSION }}
+
+      # 5c) Tag et push du latest
+      - name: Push Fluent Bit Docker image (latest)
+        run: |
+          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/fluentbit:${{ steps.extract_version.outputs.VERSION }} \
+                     ${{ secrets.DOCKERHUB_USERNAME }}/fluentbit:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/fluentbit:latest
+
+      # 6) Authentification à Google Cloud
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      # 6b) Installation du SDK gcloud
+      - name: Setup Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          install_components: "beta"
+
+      - name: Check gcloud identity
+        run: |
+          gcloud auth list
+          gcloud config list
+
+      # 7) Setup Cloud SQL Proxy
+      - name: Start Cloud SQL Proxy
+        run: |
+          docker run -d --rm \
+            --name cloud-sql-proxy \
+            -p 5432:5432 \
+            gcr.io/cloudsql-docker/gce-proxy:1.33.3 \
+              /cloud_sql_proxy \
+                -instances=${{ secrets.DB_INSTANCE_CONNECTION_NAME }}=tcp:5432 \
+                -credential_file=/key.json
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: /key.json
+
+      # 7b) Flyway migrations
+      - name: Run Flyway migrations
+        run: |
+          docker build -t migrations-image ./migrations
+
+          docker run --rm \
+            --network host \
+            -e FLYWAY_URL="jdbc:mysql://localhost:3306/${{ secrets.DB_NAME }}" \
+            -e FLYWAY_USER="${{ secrets.DB_USER }}" \
+            -e FLYWAY_PASSWORD="${{ secrets.DB_PASSWORD }}" \
+            migrations-image migrate
+
+      # 8) Génération du fichier Cloud Run à partir du template
+      - name: Generate Cloud Run service file
+        run: |
+          sed "s/{{DOCKER_USERNAME}}/${{ secrets.DOCKERHUB_USERNAME }}/g;
+               s/{{VERSION}}/${{ steps.extract_version.outputs.VERSION }}/g;
+               s/{{DB_USER}}/${{ secrets.DB_USER }}/g;
+               s/{{DB_PASSWORD}}/${{ secrets.DB_PASSWORD }}/g;
+               s/{{DB_NAME}}/${{ secrets.DB_NAME }}/g;
+               s/{{LOKI_URL}}/${{ secrets.LOKI_URL }}/g;" \
+               cloud-run-service.yaml.tmpl > cloud-run-service.yaml
+
+          echo "Fichier Cloud Run généré :"
+          cat cloud-run-service.yaml
+
+      # 9) Déploiement Cloud Run
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run services replace cloud-run-service.yaml \
+            --region ${{ secrets.GCP_REGION }} \
+            --project ${{ secrets.GCP_PROJECT_ID }}
+
+      # 9b) Rendre le service public
+      - name: Allow unauthenticated access
+        run: |
+          gcloud run services add-iam-policy-binding crud-api \
+            --region ${{ secrets.GCP_REGION }} \
+            --role roles/run.invoker \
+            --member "allUsers"
