@@ -36,7 +36,8 @@ jobs:
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          password:
+            ${{ secrets.DOCKERHUB_TOKEN }}
 
             # 4) Build de l'image Docker de l'API CRUD
       - name: Build API Docker image
@@ -90,9 +91,7 @@ jobs:
           gcloud auth list
           gcloud config list
 
-      # 7) Setup Cloud SQL Proxy
       - name: Start Cloud SQL Proxy
-        - name: Start Cloud SQL Proxy
         run: |
           docker run -d --rm \
             --name cloud-sql-proxy \
@@ -102,7 +101,6 @@ jobs:
               /cloud_sql_proxy \
                 -instances=${{ secrets.DB_INSTANCE_CONNECTION_NAME }}=tcp:3306 \
                 -credential_file=/key.json
-
 
       # 7b) Flyway migrations
       - name: Run Flyway migrations
