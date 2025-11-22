@@ -122,12 +122,13 @@ jobs:
       # 8) Génération du fichier Cloud Run à partir du template
       - name: Generate Cloud Run service file
         run: |
-          sed "s/{{DOCKER_USERNAME}}/${{ secrets.DOCKERHUB_USERNAME }}/g;
-               s/{{VERSION}}/${{ steps.extract_version.outputs.VERSION }}/g;
-               s/{{DB_USER}}/${{ secrets.DB_USER }}/g;
-               s/{{DB_PASSWORD}}/${{ secrets.DB_PASSWORD }}/g;
-               s/{{DB_NAME}}/${{ secrets.DB_NAME }}/g;
-               s/{{LOKI_URL}}/${{ secrets.LOKI_URL }}/g;" \
+          # On utilise le séparateur | au lieu de / pour éviter les erreurs avec les URLs (https://...)
+          sed "s|{{DOCKER_USERNAME}}|${{ secrets.DOCKERHUB_USERNAME }}|g;
+               s|{{VERSION}}|${{ steps.extract_version.outputs.VERSION }}|g;
+               s|{{DB_USER}}|${{ secrets.DB_USER }}|g;
+               s|{{DB_PASSWORD}}|${{ secrets.DB_PASSWORD }}|g;
+               s|{{DB_NAME}}|${{ secrets.DB_NAME }}|g;
+               s|{{LOKI_URL}}|${{ secrets.LOKI_URL }}|g;" \
                cloud-run-service.yaml.tmpl > cloud-run-service.yaml
 
           echo "Fichier Cloud Run généré :"
