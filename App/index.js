@@ -9,12 +9,21 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
+// Configuration de la base de données
 const dbConfig = {
-    host: process.env.DB_HOST || 'db',
     user: process.env.DB_USER || 'root',
     password: process.env.DB_PASSWORD || 'rootpassword',
     database: process.env.DB_NAME || 'crud_app'
 };
+
+// Détection automatique : Socket Unix (Cloud Run) ou TCP (Local)
+if (process.env.DB_HOST && process.env.DB_HOST.startsWith('/cloudsql')) {
+    // Sur Cloud Run, on utilise le chemin du socket
+    dbConfig.socketPath = process.env.DB_HOST;
+} else {
+    // En local, on utilise l'hôte classique (IP ou nom DNS)
+    dbConfig.host = process.env.DB_HOST || 'db';
+}
 
 const LOG_DIR = '/var/logs/crud';
 const APP_LOG_FILE = path.join(LOG_DIR, 'app.log');
