@@ -36,8 +36,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password:
-            ${{ secrets.DOCKERHUB_TOKEN }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
             # 4) Build de l'image Docker de l'API CRUD
       - name: Build API Docker image

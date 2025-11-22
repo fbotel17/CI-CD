@@ -1,0 +1,28 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: crud-api
+  namespace: default
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "1"
+        autoscaling.knative.dev/maxScale: "3"
+    spec:
+      containers:
+        - image: {{DOCKER_USERNAME}}/crud-api:{{VERSION}}
+          env:
+            - name: PORT
+              value: "8080"
+            - name: DB_HOST
+              value: "127.0.0.1"
+            - name: DB_USER
+              value: "{{DB_USER}}"
+            - name: DB_PASSWORD
+              value: "{{DB_PASSWORD}}"
+            - name: DB_NAME
+              value: "{{DB_NAME}}"
+            - name: LOKI_URL
+              value: "{{LOKI_URL}}"
+      containerConcurrency: 80
