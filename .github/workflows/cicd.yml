@@ -92,16 +92,17 @@ jobs:
 
       # 7) Setup Cloud SQL Proxy
       - name: Start Cloud SQL Proxy
+        - name: Start Cloud SQL Proxy
         run: |
           docker run -d --rm \
             --name cloud-sql-proxy \
-            -p 5432:5432 \
+            -p 3306:3306 \
+            -v "$PWD/key.json":/key.json \
             gcr.io/cloudsql-docker/gce-proxy:1.33.3 \
               /cloud_sql_proxy \
-                -instances=${{ secrets.DB_INSTANCE_CONNECTION_NAME }}=tcp:5432 \
+                -instances=${{ secrets.DB_INSTANCE_CONNECTION_NAME }}=tcp:3306 \
                 -credential_file=/key.json
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: /key.json
+
 
       # 7b) Flyway migrations
       - name: Run Flyway migrations
