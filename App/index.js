@@ -11,8 +11,8 @@ app.use(express.json());
 
 // Configuration de la base de données
 const dbConfig = {
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || 'rootpassword',
+    user: process.env.DB_USER || 'crud_user',
+    password: process.env.DB_PASSWORD || 'insset',
     database: process.env.DB_NAME || 'crud_app'
 };
 
