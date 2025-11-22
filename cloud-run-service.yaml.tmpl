@@ -39,14 +39,13 @@ spec:
           ports:
             - containerPort: 8080
 
-        # --- CONTENEUR 2 : FLUENT BIT (SIDECAR) ---
+        # --- CONTENEUR 2 : FLUENT BIT ---
         - name: fluent-bit
           image: {{DOCKER_USERNAME}}/fluentbit:{{VERSION}}
           env:
-            # On passe l'URL Loki nettoyée (juste le domaine)
+            # C'est cette variable que Fluent Bit va utiliser
             - name: LOKI_HOST
               value: "{{LOKI_HOST_CLEAN}}"
-          # Fluent Bit lit les logs ici
           volumeMounts:
             - name: shared-logs
               mountPath: /var/logs/crud
