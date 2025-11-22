@@ -112,10 +112,9 @@ jobs:
         run: |
           docker build -t migrations-image ./migrations
 
-          # --network host permet au conteneur d'accéder au port 3306 du runner (où tourne le proxy)
           docker run --rm \
             --network host \
-            -e FLYWAY_URL="jdbc:mysql://127.0.0.1:3306/${{ secrets.DB_NAME }}" \
+            -e FLYWAY_URL="jdbc:mysql://127.0.0.1:3306/${{ secrets.DB_NAME }}?allowPublicKeyRetrieval=true&useSSL=false" \
             -e FLYWAY_USER="${{ secrets.DB_USER }}" \
             -e FLYWAY_PASSWORD="${{ secrets.DB_PASSWORD }}" \
             migrations-image migrate
