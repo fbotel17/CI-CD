@@ -1,7 +1,6 @@
 name: CI-CD CRUD API
 
 on:
-  # On déclenche le pipeline uniquement quand on pousse un tag de version
   push:
     tags:
       - "v*.*.*" # ex : v1.0.0, v2.3.1
@@ -14,3 +13,20 @@ jobs:
       # 1) Récupération du code source depuis GitHub
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      # 2) Extraction de la version depuis le tag Git
+      - name: Extract version from tag
+        id: extract_version
+        run: |
+          # GITHUB_REF ressemble à : refs/tags/v1.2.3
+          RAW_REF="${GITHUB_REF#refs/tags/}"   # -> v1.2.3
+
+          # On enlève le 'v' pour avoir juste 1.2.3
+          VERSION="${RAW_REF#v}"               # -> 1.2.3
+
+          echo "Tag brut : $RAW_REF"
+          echo "Version sans v : $VERSION"
+
+          # On expose ces valeurs comme outputs du step
+          echo "TAG=$RAW_REF" >> $GITHUB_OUTPUT
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
