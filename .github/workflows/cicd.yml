@@ -122,18 +122,18 @@ jobs:
       # 8) Génération du fichier Cloud Run à partir du template
       - name: Generate Cloud Run service file
         run: |
-          # On utilise le séparateur | au lieu de / pour éviter les erreurs avec les URLs (https://...)
+          # On ajoute une ligne pour remplacer le namespace 'default' par l'ID du projet
           sed "s|{{DOCKER_USERNAME}}|${{ secrets.DOCKERHUB_USERNAME }}|g;
                s|{{VERSION}}|${{ steps.extract_version.outputs.VERSION }}|g;
                s|{{DB_USER}}|${{ secrets.DB_USER }}|g;
                s|{{DB_PASSWORD}}|${{ secrets.DB_PASSWORD }}|g;
                s|{{DB_NAME}}|${{ secrets.DB_NAME }}|g;
-               s|{{LOKI_URL}}|${{ secrets.LOKI_URL }}|g;" \
+               s|{{LOKI_URL}}|${{ secrets.LOKI_URL }}|g;
+               s|namespace: default|namespace: ${{ secrets.GCP_PROJECT_ID }}|g;" \
                cloud-run-service.yaml.tmpl > cloud-run-service.yaml
 
           echo "Fichier Cloud Run généré :"
           cat cloud-run-service.yaml
-
       # 9) Déploiement Cloud Run
       - name: Deploy to Cloud Run
         run: |
