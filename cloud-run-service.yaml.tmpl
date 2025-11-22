@@ -13,8 +13,6 @@ spec:
       containers:
         - image: {{DOCKER_USERNAME}}/crud-api:{{VERSION}}
           env:
-            - name: PORT
-              value: "8080"
             - name: DB_HOST
               value: "127.0.0.1"
             - name: DB_USER
