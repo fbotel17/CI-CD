@@ -73,43 +73,49 @@ jobs:
                      ${{ secrets.DOCKERHUB_USERNAME }}/fluentbit:latest
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/fluentbit:latest
 
-      # 6) Authentification à Google Cloud
+      # 6) Authentification et création explicite du fichier de clé pour Docker
+      - name: Create Service Account Key File
+        run: echo '${{ secrets.GCP_SA_KEY }}' > key.json
+
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
 
-      # 6b) Installation du SDK gcloud
       - name: Setup Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
-          install_components: "beta"
 
-      - name: Check gcloud identity
-        run: |
-          gcloud auth list
-          gcloud config list
-
+      # 7) Démarrage du Proxy SQL
+      # On ajoute un sleep pour être sûr qu'il est prêt
       - name: Start Cloud SQL Proxy
         run: |
-          docker run -d --rm \
+          docker run -d \
             --name cloud-sql-proxy \
+            --restart always \
             -p 3306:3306 \
-            -v "$PWD/key.json":/key.json \
+            -v "$(pwd)/key.json":/key.json:ro \
             gcr.io/cloudsql-docker/gce-proxy:1.33.3 \
               /cloud_sql_proxy \
-                -instances=${{ secrets.DB_INSTANCE_CONNECTION_NAME }}=tcp:3306 \
-                -credential_file=/key.json
+              -instances=${{ secrets.DB_INSTANCE_CONNECTION_NAME }}=tcp:0.0.0.0:3306 \
+              -credential_file=/key.json
+
+          # Attendre un peu que le proxy démarre
+          sleep 10
+
+          # Afficher les logs pour vérifier si ça a planté
+          docker logs cloud-sql-proxy
 
       # 7b) Flyway migrations
       - name: Run Flyway migrations
         run: |
           docker build -t migrations-image ./migrations
 
+          # --network host permet au conteneur d'accéder au port 3306 du runner (où tourne le proxy)
           docker run --rm \
             --network host \
-            -e FLYWAY_URL="jdbc:mysql://localhost:3306/${{ secrets.DB_NAME }}" \
+            -e FLYWAY_URL="jdbc:mysql://127.0.0.1:3306/${{ secrets.DB_NAME }}" \
             -e FLYWAY_USER="${{ secrets.DB_USER }}" \
             -e FLYWAY_PASSWORD="${{ secrets.DB_PASSWORD }}" \
             migrations-image migrate
